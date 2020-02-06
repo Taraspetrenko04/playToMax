@@ -1,0 +1,40 @@
+.container{
+    width: 600px;
+    margin: 0 auto;
+    background-color: lightgrey;
+    font-family: Arial, Helvetica, sans-serif;
+}
+
+.title{
+    text-align: center;
+    padding: 30px 0;
+    font-size: 30px;
+}
+
+.button{
+    width: 50px;
+    height: 30px;
+    background-color: lightsalmon;
+    font-weight: bold;
+}
+.hide{
+    display: none;
+}
+
+.td-cell{
+    width: 35px;
+    height: 35px;
+    border: 2px solid black;
+    text-align: center;
+    vertical-align: middle;
+    cursor: pointer;
+}
+
+.td-cell:hover{
+    background-color: coral;
+}
+
+.table{
+    margin: 0 auto;
+}
+
