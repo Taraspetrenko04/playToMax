@@ -17,24 +17,42 @@
     background-color: lightsalmon;
     font-weight: bold;
 }
-.hide{
+
+
+td.hide{
+    background-color: #ffff;
+}
+.close{
     display: none;
 }
 
-.td-cell{
-    width: 35px;
-    height: 35px;
-    border: 2px solid black;
+td{
+    width: 55px;
+    height: 55px;
+    border: 3px solid #ffff ;
     text-align: center;
     vertical-align: middle;
     cursor: pointer;
 }
 
-.td-cell:hover{
-    background-color: coral;
+td:hover{
+    background-color: aqua;
 }
 
-.table{
+table{
     margin: 0 auto;
+}
+
+.hearts{
+    background-color: red;
+}
+.spade {
+    background-color: rgb(18, 216, 34);
+}
+.diamonds{
+    background-color: rgb(247, 155, 35);
+}
+.crosses{
+    background-color: rgba(24, 60, 219, 0.945);
 }
 
