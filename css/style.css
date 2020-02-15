@@ -45,6 +45,9 @@ table{
 
 .hearts{
     background-color: red;
+    /* background-image: url(../img/chervi.jpg);
+    background-size: cover;
+    background-position: center; */
 }
 .spade {
     background-color: rgb(18, 216, 34);
