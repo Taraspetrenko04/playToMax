@@ -19,11 +19,10 @@
 
     //GAME LOGIC
     const game = {
-        height: 3,
-        width: 3,
+        height: 7,
+        width: 7,
         field: [],
-        // suits: ['hearts', 'spade', 'diamonds', 'crosses'],
-        suits: ['hearts', 'spade' ],
+        suits: ['hearts', 'spade', 'diamonds', 'crosses'],
         rndSuit: (suits)=>{
             return suits[ parseInt(Math.random()*suits.length) ];
         },
@@ -34,7 +33,7 @@
                 for(let j=0; j<this.width; j++){
                     td.push(new Cell( this.rndSuit(this.suits) ) ); 
                 }
-            this. field.push(td);
+            this.field.push(td);
             }
         },
 
@@ -89,21 +88,23 @@
             let x = event.target.cellIndex;
             let y = event.target.parentNode.rowIndex;
             this.suit = game.field[y][x].suit;
-            this.recurs_open(x, y);
+            console.log(this.suit);
+            this.recurs_open(y, x);
         },
 
 
         //Если цвет совпаадает то рекурсивно проходим, если нет то идем дальше
         recurs_open: function(y, x) {
             let td = this.table.rows[y].children[x];
-            console.log(game.field);
           
             if (game.field[y][x].isDelete) return;
             
 
-            if( game.field[y][x].suit === this.suit ){
+            if( game.field[y][x].suit == this.suit ){
 
             game.field[y][x].isDelete = true;
+            console.log(game.field[y][x].isDelete);
+           
            
             let yStart = y > 0 ? y - 1 : y;
             let xStart = x > 0 ? x - 1 : x;
@@ -111,11 +112,11 @@
                 for( let i = yStart; i<=y + 1 && i<=game.height-1 ; i++ ){
                     for( let j = xStart; j<=x + 1 && j<=game.width-1; j++ ){
                         console.log(i, j);
-                        td.classList.add('hide');
                         this.recurs_open(i, j);
-                       
                         }
                     }
+                td.classList.add('hide');
+                    
             }
             
             console.log(game.field);
