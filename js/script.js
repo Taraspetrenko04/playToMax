@@ -19,13 +19,13 @@
 
     //GAME LOGIC
     const game = {
-        height: 8,
-        width: 8,
+        height: 3,
+        width: 3,
         field: [],
-        suits: ['hearts', 'spade', 'diamonds', 'crosses'],
+        // suits: ['hearts', 'spade', 'diamonds', 'crosses'],
+        suits: ['hearts'],
         rndSuit: (suits)=>{
-            let rnd = parseInt(Math.random()*suits.length);
-            return suits[rnd];
+            return suits[ parseInt(Math.random()*suits.length) ];
         },
         fillField: function() {
             this.field = [];
@@ -88,24 +88,20 @@
         open: function(event) {
             let x = event.target.cellIndex;
             let y = event.target.parentNode.rowIndex;
-            console.log(` x = ${x}, y = ${y}`);
-            // event.target.classList.add('hide');
+            // console.log(` x = ${x}, y = ${y}`);
             this.suit = game.field[y][x].suit;
+            // console.log(this.suit)
+            // console.log(game.field)
             this.recurs_open(x, y);
         },
 
 
         //Если цвет совпаадает то рекурсивно проходим, если нет то идем дальше
-        recurs_open: function(x, y) {
-            console.log(game.field)
-            if (game.field[y][x].isDelete) return;
-            console.log(this.suit);
-
-            
+        recurs_open: function(y, x) {
             let td = this.table.rows[y].children[x];
-            
-            // let suit = game.field[y][x].suit;
-            console.log(game.field[y][x].suit == this.suit )
+            console.log(game.field);
+          
+            if (game.field[y][x].isDelete) return;
             
 
             if( game.field[y][x].suit == this.suit ){
@@ -113,44 +109,29 @@
            
             let yStart = y > 0 ? y - 1 : y;
             let xStart = x > 0 ? x - 1 : x;
-            for( let i = yStart; i <=yStart+1 && i<game.height ; i++ ){
-                for( let j = xStart; j <=xStart + 1 && j<game.width; j++ ){
-                   this.recurs_open(x, y)
-                }
+
+                for( let i = yStart; i<=y + 1 && i<=game.height-1 ; i++ ){
+                    for( let j = xStart; j<=x + 1 && j<=game.width-1; j++ ){
+                        console.log(i, j);
+                        this.recurs_open(i, j);
+                       
+                        }
+                    }
             }
             td.classList.add('hide');
-        }
-        
-            // console.log('y =' + start);
-            // console.log('x' +  end); 
-            
-                
-            // for( let i = start; i <= y + 1 && y < game.height; i++ ){
-            //     for( let j = end; j <= x + 1 && x < game.width; j++ ){
-            //         if( td.classList.value == suit){
-            //             td.classList.add('hide');
-            //             game.field[y][x].isDelete = true;
-            //             this.recurs_open( i, j );
-            //         }
-            //         else{
-            //             return;
-            //         }
-            //     }
-            // }
-            
-            
+            console.log(game.field);
            
         }
 
     }
 
-// 
-//   
-// 
 
     window.onload = () => {
 
+
     page.init()
+
+
  }
 
 
