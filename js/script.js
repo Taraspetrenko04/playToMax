@@ -23,7 +23,7 @@
         width: 3,
         field: [],
         // suits: ['hearts', 'spade', 'diamonds', 'crosses'],
-        suits: ['hearts'],
+        suits: ['hearts', 'spade' ],
         rndSuit: (suits)=>{
             return suits[ parseInt(Math.random()*suits.length) ];
         },
@@ -88,10 +88,7 @@
         open: function(event) {
             let x = event.target.cellIndex;
             let y = event.target.parentNode.rowIndex;
-            // console.log(` x = ${x}, y = ${y}`);
             this.suit = game.field[y][x].suit;
-            // console.log(this.suit)
-            // console.log(game.field)
             this.recurs_open(x, y);
         },
 
@@ -104,7 +101,8 @@
             if (game.field[y][x].isDelete) return;
             
 
-            if( game.field[y][x].suit == this.suit ){
+            if( game.field[y][x].suit === this.suit ){
+
             game.field[y][x].isDelete = true;
            
             let yStart = y > 0 ? y - 1 : y;
@@ -113,12 +111,13 @@
                 for( let i = yStart; i<=y + 1 && i<=game.height-1 ; i++ ){
                     for( let j = xStart; j<=x + 1 && j<=game.width-1; j++ ){
                         console.log(i, j);
+                        td.classList.add('hide');
                         this.recurs_open(i, j);
                        
                         }
                     }
             }
-            td.classList.add('hide');
+            
             console.log(game.field);
            
         }
